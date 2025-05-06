@@ -1,0 +1,301 @@
+.navbar {
+    background: var(--navbar-bg);
+    backdrop-filter: var(--card-blur);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--card-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navbar-text);
+    text-decoration: none;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between theme toggle and hamburger */
+}
+
+.navbar-links {
+    display: flex;
+    gap: 1rem; /* Add gap between links */
+    align-items: center;
+}
+
+.navbar-link {
+    color: var(--navbar-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem; /**/
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.navbar-link:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle {
+    background: var(--button-bg);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(195, 222, 98, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--navbar-text);
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--navbar-text);
+    transition: background 0.3s ease;
+}
+
+.hamburger::before {
+    top: -6px; /* Closer spacing for a simpler look */
+}
+
+.hamburger::after {
+    top: 6px; /* Symmetrical spacing below the main line */
+}
+
+.navbar-toggle.active .hamburger {
+    background: var(--accent-color); /* Change color when active */
+}
+
+.navbar-toggle.active .hamburger::before {
+    background: var(--accent-color); /* Change color when active */
+}
+
+.navbar-toggle.active .hamburger::after {
+    background: var(--accent-color); /* Change color when active */
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.75rem ; /* Reduced padding to give more space for buttons */
+        border-radius: 5px;
+    }
+
+    .navbar-container {
+        flex-wrap: nowrap; /* Prevent wrapping to ensure buttons stay in one row */
+    }
+
+    .navbar-logo {
+        font-size: 1.3rem; /* Slightly smaller logo to save space */
+    }
+
+    .navbar-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--navbar-bg);
+        flex-direction: column;
+        padding: 0rem;
+        gap: 0.75rem; /*Gap for mobile menu*/
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .navbar-links.active {
+        max-height: 420px;
+        padding: 1.5rem;
+    }
+
+    .navbar-link {
+        background: var(--button-bg); /* Add gradient background */
+        padding: 0.75rem 1.5rem; /* Slightly increase padding for better touch target */
+        border: 1px solid var(--accent-color); /* Add border */
+        border-radius: 50px; /* Rounded corners for button look */
+        color: #fff; /* White text for contrast */
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-link:hover {
+        background: var(--button-hover); /* Hover background */
+        color: #fff;
+        transform: scale(1.05);
+    }
+
+    .navbar-link::after {
+        display: none; /* Remove the underline effect in mobile view */
+    }
+
+    .navbar-right {
+        display: flex;
+        flex-direction: row; /* Ensure horizontal alignment */
+        align-items: center;
+        gap: 0.3rem; /* Reduced gap for smaller screens */
+    }
+
+    .navbar-actions {
+        display: flex;
+        align-items: center;
+    }
+
+    .theme-toggle {
+        width: 30px; /* Slightly smaller for simplicity */
+        height: 30px;
+        background: #4a5256; /* Solid black background */
+        border: none; /* No border for minimal look */
+        border-radius: 50%; /* Keep circular shape */
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); /* Very subtle shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+        transform: scale(1.05); /* Subtle scale on hover */
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* White glow on hover */
+    }
+
+    .theme-toggle i {
+        font-size: 1rem; /* Smaller icon for balance */
+       color: #FFD700; /* White icon for contrast */
+    }
+
+    .theme-toggle .svg-inline--fa .fa-moon {
+        fill: #FFD700; /* Yellow for moon */
+    }
+    .theme-toggle .svg-inline--fa .fa-sun {
+        fill: #FF4500; /* Orange for sun */
+    }
+
+    .theme-toggle.active i {
+        transform: scale(1.1); /* Slight scale when active, no rotation */
+    }
+
+    .navbar-toggle {
+        display: block; /* Ensure hamburger is visible */
+        background: transparent; /* No background */
+        border: none; /* No border */
+        padding: 0.5rem; /* Add padding for touch area */
+        width: auto; /* Let the width fit the hamburger lines */
+        height: auto; /* Let the height fit the hamburger lines */
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-toggle:hover {
+        transform: scale(1.05); /* Subtle scale on hover */
+    }
+    } 
+
+    .hamburger {
+        width: 25px; /* Slightly larger lines for visibility */
+        height: 2.5px; /* Keep thickness */
+        background: var(--navbar-text); /* Theme color (white/light gray) */
+        border-radius: 0; /* Remove rounded lines for a sharper look */
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-left: 10px;
+        transform: none; /* Remove centering transform */
+        transition: background 0.3s ease;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+        width: 100%;
+        height: 2.8px; /* Match the main line thickness */
+        background: var(--navbar-text); /* Theme color */
+        border-radius: 0; /* Remove rounded lines */
+        transition: background 0.3s ease;
+    }
+
+    .hamburger::before {
+        top: -5px; /* Slightly closer spacing for better alignment */
+    }
+
+    .hamburger::after {
+        top: 5px; /* Symmetrical spacing below the main line */
+    }
+
+    .navbar-toggle:hover .hamburger,
+    .navbar-toggle:hover .hamburger::before,
+    .navbar-toggle:hover .hamburger::after {
+        background: var(--accent-color); /* Change line color on hover */
+    }
+
+    .navbar-toggle.active .hamburger {
+        background: var(--accent-color); /* Change line color when active */
+    }
+
+    .navbar-toggle.active .hamburger::before {
+        background: var(--accent-color);
+    }
