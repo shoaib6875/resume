@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faDatabase, faCloud } from '@fortawesome/free-solid-svg-icons';
-import profileImage from '../assets/profile.png';
+import profileImage from '../assets/profile.jpg';
 
 const Intro = () => {
   const [isExpanded, setIsExpanded] = useState(false);
